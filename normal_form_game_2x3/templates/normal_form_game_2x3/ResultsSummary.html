@@ -1,0 +1,114 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+<table width="100%" border="0" style="background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded';" padding=50px,50px,50px,50px margin=10px;>
+  <tbody>
+    <tr>
+      <th scope="row" width=20px></th>
+		<td>Results Summary&nbsp;</td>
+      <td width=110px; height=130px><img src="{% static 'zhaw_design/Unbenannt-1.png' %}" style="width:90px;height:102px;" align="center"/></td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
+
+{% block content %}
+
+
+ <table class="table">
+        <tr>
+            <th>Round</th>
+            <th>Player and outcome</th>
+        </tr>
+        {% for p,o  in player_opponent_in_all_rounds  %}
+            <tr>
+                <td>{{ p.round_number }}</td>
+                <td>You chose to {{ p.decision }} and the other participant chose {{ o.decision }}. Your payoff was {{ p.payoff }}.</td>
+ 
+		
+            </tr>
+        {% endfor %}
+    </table>
+
+<p>
+</p>
+    <h3 style="color: rgb(0,0,0); font: Helvetica Rounded; font-family: 'Helvetica Rounded'; font-size: 20px">
+        <br>
+Summary for Player 1
+    </h3>
+<p>
+</p>
+
+
+<table class='table table-bordered text-center' style='border-color: rgba(255,255,255,1); width: auto; margin: auto' border="0" rules="rows" cellspacing="0" border-spacing="0" border-color="#ffffff">
+  <tbody>
+    <tr>
+      <th scope="row" colspan = "2" rowspan = "2">&nbsp;</th>
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" colspan = "3">&nbsp;Player 2</th>
+      </tr>
+    <tr>
+      <th style="background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica; font-family: 'Helvetica'">&nbsp;{{player.other_player.strategy_1}}</th>
+      <th style="background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica; font-family: 'Helvetica'">&nbsp;{{player.other_player.strategy_2}}</th>
+      <th style="background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica; font-family: 'Helvetica'">&nbsp;{{player.other_player.strategy_3}}</th>
+      </tr>
+    <tr class="highlight-row-on-hover">
+      <th style="background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded'" scope="row" rowspan="2" align="center"><span class="rotate90" align="center">Player 1</span></th>
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" align="left">&nbsp;{{ player.strategy_1 }}</th>
+      <td>&nbsp;{{ player.payoff_selfS1_otherS1 }}, {{ player.other_player.payoff_selfS1_otherS1 }}</td>
+      <td>{{ player.payoff_selfS1_otherS2 }}, {{ player.other_player.payoff_selfS2_otherS1 }}&nbsp;</td>
+      <td>{{ player.payoff_selfS1_otherS3 }}, {{ player.other_player.payoff_selfS3_otherS1 }}</td>
+      </tr>
+    <tr class="highlight-row-on-hover">
+      <!--<th rowspan="3"><span class="rotate90">You</span></th>-->
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" align="left">&nbsp;{{ player.strategy_2 }}</th>
+      <td>&nbsp;{{ player.payoff_selfS2_otherS1 }}, {{ player.other_player.payoff_selfS1_otherS2 }}</td>
+      <td>&nbsp;{{ player.payoff_selfS2_otherS2 }}, {{ player.other_player.payoff_selfS2_otherS2 }}</td>
+      <td>&nbsp;{{ player.payoff_selfS2_otherS3 }}, {{ player.other_player.payoff_selfS3_otherS2 }}</td>
+    </tr>
+    </tbody>
+</table>
+
+<p>
+</p>
+    <h3 style="color: rgb(0,0,0); font: Helvetica Rounded; font-family: 'Helvetica Rounded'; font-size: 20px">
+        <br>
+<br>
+Summary for Player 2
+    </h3>
+<p>
+</p>
+
+<table class='table table-bordered text-center'
+           style='width: auto; margin: auto' >
+  <tbody>
+    <tr>
+      <th scope="row" colspan="2" rowspan="2">&nbsp;</th>
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" colspan = "2">&nbsp;Player 1</th>
+      </tr>
+    <tr>
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px">&nbsp;{{player.other_player.strategy_1}}</th>
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px">&nbsp;{{player.other_player.strategy_2}}</th>
+      </tr>
+    <tr class="highlight-row-on-hover">
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" rowspan="3" scope="row"><span class="rotate90">Player 2</span></th>
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" align="left">&nbsp;{{ player.strategy_1 }}</th>
+      <td>&nbsp;{{ player.payoff_selfS1_otherS1 }}, {{ player.other_player.payoff_selfS1_otherS1 }}</td>
+      <td>{{ player.payoff_selfS1_otherS2 }}, {{ player.other_player.payoff_selfS2_otherS1 }}&nbsp;</td>
+      </tr>
+    <tr class="highlight-row-on-hover">
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" align="left">&nbsp;{{ player.strategy_2 }}</th>
+      <td>&nbsp;{{ player.payoff_selfS2_otherS1 }}, {{ player.other_player.payoff_selfS1_otherS2 }}</td>
+      <td>&nbsp;{{ player.payoff_selfS2_otherS2 }}, {{ player.other_player.payoff_selfS2_otherS2 }}</td>
+      </tr>
+    <tr class="highlight-row-on-hover">
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" align="left">{{ player.strategy_3 }}</th>
+      <td>&nbsp;{{ player.payoff_selfS3_otherS1 }}, {{ player.other_player.payoff_selfS1_otherS3 }}</td>
+      <td>&nbsp;{{ player.payoff_selfS3_otherS2 }}, {{ player.other_player.payoff_selfS2_otherS3 }}</td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+{% endblock %}

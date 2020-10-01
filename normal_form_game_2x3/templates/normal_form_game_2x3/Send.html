@@ -1,0 +1,80 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+   
+<table width="100%" border="0" style="background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded';" padding=50px,50px,50px,50px margin=10px;>
+  <tbody>
+    <tr>
+      <th scope="row" width=20px></th>
+		<td>Your Choice Round {{ subsession.round_number }} of {{ session.config.num_repetitions }}&nbsp;</td>
+      <td width=110px; height=130px><img src="{% static 'zhaw_design/Unbenannt-1.png' %}" style="width:90px;height:102px;" align="center"/></td>
+    </tr>
+  </tbody>
+</table>
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'global/matrix.css' %}" />
+
+    <style>
+        .highlight-row-on-hover:hover td {
+            background-color: #f1f7fb;
+        }
+
+
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+<table class='table table-bordered text-center'
+           style='width: auto; margin: auto' border="0" cellspacing="0" border-spacing="0">
+  <tbody>
+    <tr>
+      <th scope="row" colspan="2" rowspan="2">&nbsp;</th>
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" colspan = "3">&nbsp;The Other Participant</th>
+      </tr>
+    <tr>
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px">&nbsp;{{player.other_player.strategy_1}}</th>
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px">&nbsp;{{player.other_player.strategy_2}}</th>
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px">&nbsp;{{player.other_player.strategy_3}}</th>
+      </tr>
+    <tr class="highlight-row-on-hover">
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" rowspan="2" scope="row"><span>You</span></th>
+      <th align="left"><button name="decision" value="{{ player.strategy_1 }}" style="background-color: #f1f7fb; color: rgb(0,103,163); font: Helvetica Rounded; font-family: 'Helvetica Rounded'; border: none; width: 50; height: 50;" name="Next_Button" value="True">I will use {{player.strategy_1}}</button></th>
+      <td>&nbsp;{{ player.payoff_selfS1_otherS1 }}, {{ player.other_player.payoff_selfS1_otherS1 }}</td>
+      <td>{{ player.payoff_selfS1_otherS2 }}, {{ player.other_player.payoff_selfS2_otherS1 }}&nbsp;</td>
+      <td>{{ player.payoff_selfS1_otherS3 }}, {{ player.other_player.payoff_selfS3_otherS1 }}</td>
+      </tr>
+    <tr class="highlight-row-on-hover">
+      <th align="left"><button name="decision" value="{{ player.strategy_2 }}" style="background-color: #f1f7fb; color: rgb(0,103,163); font: Helvetica Rounded; font-family: 'Helvetica Rounded'; border: none; width: 50; height: 50;" name="Next_Button" value="True">I will use {{player.strategy_2}}</button></th>
+      <td>&nbsp;{{ player.payoff_selfS2_otherS1 }}, {{ player.other_player.payoff_selfS1_otherS2 }}</td>
+      <td>&nbsp;{{ player.payoff_selfS2_otherS2 }}, {{ player.other_player.payoff_selfS2_otherS2 }}</td>
+      <td>&nbsp;{{ player.payoff_selfS2_otherS3 }}, {{ player.other_player.payoff_selfS3_otherS2 }}</td>
+      </tr>
+  </tbody>
+</table>
+
+		<p> </p>
+		<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td align="center"><img text-align="center" src="{% static image_path %}"/></td>
+    </tr>
+  </tbody>
+</table>
+<p> </p>
+
+<p>
+</p>
+<p>Here you can chat with the other participant.</p>
+
+    {% chat %}
+
+
+    {% include Constants.instructions_template %}
+
+{% endblock %}

@@ -1,0 +1,56 @@
+<link href="../../../_static/global/matrix.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/global/theme.css" rel="stylesheet" type="text/css">
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+    <h3 style="color: rgb(0,0,0); font: Helvetica Rounded; font-family: 'Helvetica Rounded'; font-size: 20px">
+        Instructions
+    </h3>
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+
+    <p>
+        {{session.config.text1}}
+        <!-- In this study, you will be randomly and anonymously paired with another
+        participant.
+        Each of you simultaneously and privately chooses which strategy to follow.
+        Your payoffs will be determined by the choices of both as below: -->
+    </p>
+    <p><i>In each cell, the amount to the left is the payoff for
+        you and to the right for the other participant.</i></p>	
+		
+		<table class='table table-bordered text-center' style='border-color: rgba(255,255,255,1); width: auto; margin: auto' border="0" rules="rows" cellspacing="0" border-spacing="0" border-color="#ffffff">
+  <tbody>
+    <tr>
+      <th scope="row" colspan = "2" rowspan = "2">&nbsp;</th>
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" colspan = "3">&nbsp;The Other Participant</th>
+      </tr>
+    <tr>
+      <th style="background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica; font-family: 'Helvetica'">&nbsp;{{player.other_player.strategy_1}}</th>
+      <th style="background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica; font-family: 'Helvetica'">&nbsp;{{player.other_player.strategy_2}}</th>
+      <th style="background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica; font-family: 'Helvetica'">&nbsp;{{player.other_player.strategy_3}}</th>
+      </tr>
+    <tr class="highlight-row-on-hover">
+      <th style="background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded'" scope="row" rowspan="2" align="center"><span>You</span></th>
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" align="left">&nbsp;{{ player.strategy_1 }}</th>
+      <td>&nbsp;{{ player.payoff_selfS1_otherS1 }}, {{ player.other_player.payoff_selfS1_otherS1 }}</td>
+      <td>{{ player.payoff_selfS1_otherS2 }}, {{ player.other_player.payoff_selfS2_otherS1 }}&nbsp;</td>
+      <td>{{ player.payoff_selfS1_otherS3 }}, {{ player.other_player.payoff_selfS3_otherS1 }}</td>
+      </tr>
+    <tr class="highlight-row-on-hover">
+      <!--<th rowspan="3"><span class="rotate90">You</span></th>-->
+      <th style="border-color: rgba(255,255,255,1); background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded' padding:50px" align="left">&nbsp;{{ player.strategy_2 }}</th>
+      <td>&nbsp;{{ player.payoff_selfS2_otherS1 }}, {{ player.other_player.payoff_selfS1_otherS2 }}</td>
+      <td>&nbsp;{{ player.payoff_selfS2_otherS2 }}, {{ player.other_player.payoff_selfS2_otherS2 }}</td>
+      <td>&nbsp;{{ player.payoff_selfS2_otherS3 }}, {{ player.other_player.payoff_selfS3_otherS2 }}</td>
+    </tr>
+    </tbody>
+</table>
+		
+<p> </p>
+		
+</div>
+</div>

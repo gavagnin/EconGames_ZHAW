@@ -1,0 +1,17 @@
+.rotate90 {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    float: left;
+    margin-top: 1em; // TODO: do not hardcode to center align
+}
+
+@font-face {
+font-family: 'Helvetica Rounded';
+src: url('https://www.zhaw.ch/fileadmin/Templates/Fonts/HelveticaRoundedBold/HelveticaRoundedBold.woff2') format('woff2'),
+url('https://www.zhaw.ch/fileadmin/Templates/Fonts/HelveticaRoundedBold/HelveticaRoundedBold.woff2') format('woff');
+font-weight: normal;
+font-style: normal;
+}

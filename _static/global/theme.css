@@ -1,0 +1,11 @@
+.instructions {
+    margin-bottom: 20px;
+}
+
+@font-face {
+font-family: 'Helvetica Rounded';
+src: url('https://www.zhaw.ch/fileadmin/Templates/Fonts/HelveticaRoundedBold/HelveticaRoundedBold.woff2') format('woff2'),
+url('https://www.zhaw.ch/fileadmin/Templates/Fonts/HelveticaRoundedBold/HelveticaRoundedBold.woff2') format('woff');
+font-weight: normal;
+font-style: normal;
+}

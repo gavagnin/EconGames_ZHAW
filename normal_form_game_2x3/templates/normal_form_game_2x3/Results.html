@@ -1,0 +1,47 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+<table width="100%" border="0" style="background-color: rgb(0,103,163); color: rgba(255,255,255,1); font: Helvetica Rounded; font-family: 'Helvetica Rounded';" padding=50px,50px,50px,50px margin=10px;>
+  <tbody>
+    <tr>
+      <th scope="row" width=20px></th>
+		<td>Results&nbsp;</td>
+      <td width=110px; height=130px><img src="{% static 'zhaw_design/Unbenannt-1.png' %}" style="width:90px;height:102px;" align="center"/></td>
+    </tr>
+  </tbody>
+</table>
+
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        {% if same_choice %}
+            Both of you chose to {{ my_decision }}.
+        {% else %}
+            You chose to {{ my_decision }} and the other participant chose to {{ opponent_decision }}.
+        {% endif %}
+    </p>
+
+    <p>
+        As a result, you received {{ player.payoff }}.
+    </p>
+
+		<p> </p>
+		<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td align="center"><img text-align="center" src="{% static image_path %}"/></td>
+    </tr>
+  </tbody>
+</table>
+<p> </p>
+
+<button style="background-color: rgb(0,103,163); color: white; font: Helvetica Rounded; font-family: 'Helvetica Rounded'; border: none; width: 50; height: 50;" name="Next_Button" value="True" >Next</button><br>
+<p>
+</p>
+
+    {% include Constants.instructions_template %}
+
+{% endblock %}
